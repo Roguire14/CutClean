@@ -1,0 +1,16 @@
+name: CutClean
+version: 1
+author: Roguire14
+main: fr.roguire.cutclean.CutClean
+commands:
+  activate:
+    description: "Commande pour activer le scenario CutClean"
+    usage: /<command>
+    aliases: [on]
+  desactivate:
+    description : "Commande pour désactiver le scenario CutClean"
+    usage: /<command>
+    aliases: [off]
+  cc:
+    description : "Commande globale pour gérer le plugin"
+    usage: /<command> <on|off>

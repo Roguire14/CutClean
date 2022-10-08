@@ -1,0 +1,5 @@
+no-permission: "&cVous n'êtes pas autorisé à effectuer cette commande"
+activation: "&aLe scenario CutClean est activé"
+desactivation: "&cLe scenario CutClean est désactivé"
+already-off: "&4Le scenario CutClean est déjà désactivé"
+already-on: "&4Le scenario CutClean est déjà activé"
