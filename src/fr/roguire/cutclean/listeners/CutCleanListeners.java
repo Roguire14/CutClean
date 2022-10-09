@@ -44,7 +44,7 @@ public class CutCleanListeners implements Listener {
 		
 		switch (e.getBlock().getType()) {
 		case GOLD_ORE:
-			if(handIt == Material.DIAMOND_PICKAXE || handIt == Material.GOLD_PICKAXE || handIt == Material.DIAMOND_PICKAXE) {
+			if(handIt == Material.IRON_PICKAXE || handIt == Material.GOLD_PICKAXE || handIt == Material.DIAMOND_PICKAXE) {
 				ore = new ItemStack(Material.GOLD_INGOT);
 				e.setExpToDrop(4);
 				break;
