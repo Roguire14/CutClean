@@ -1,5 +1,6 @@
 package fr.roguire.cutclean.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,94 +27,26 @@ public class CutCleanCommandsManager implements CommandExecutor {
 			
 			Player player = (Player)sender;
 			
-			if(args.length == 0) {
+			boolean state = plugin.getStatus();
+			
+			if(!player.hasPermission("cc.change")) {
 				
-				if(cmd.getName().equals("activate")) {
-					
-					if(!player.hasPermission("cc.change")) {
-						
-						player.sendMessage(plugin.getStringFromConfig("no-permission"));
-						return true;
-					}
-					
-					if(plugin.getStatus()) {
-						
-						player.sendMessage(plugin.getStringFromConfig("already-on"));
-						return true;
-						
-					}
-					
-					plugin.setStatus(true);
-					player.sendMessage(plugin.getStringFromConfig("activation"));
-					success = true;
-					
-				}else if(cmd.getName().equals("desactivate")) {
-					
-					if(!player.hasPermission("cc.change")) {
-						
-						player.sendMessage(plugin.getStringFromConfig("no-permission"));
-						return true;
-					
-					}
-					
-					if(!plugin.getStatus()) {
-						
-						player.sendMessage(plugin.getStringFromConfig("already-off"));
-						return true;
-						
-					}
-					
-					plugin.setStatus(false);
-					player.sendMessage(plugin.getStringFromConfig("desactivation"));
-					success = true;
-					
-				}
+				player.sendMessage(plugin.getStringFromConfig("no-permission"));
+				return true;
 				
 			}
 			
-			else if(args.length == 1) {
+			if(state) {
 				
-				if(args[0].equals("on")) {
-					
-					if(!player.hasPermission("cc.change")) {
-						
-						player.sendMessage(plugin.getStringFromConfig("no-permission"));
-						return true;
-						
-					}
-					
-					if(plugin.getStatus()) {
-						
-						player.sendMessage(plugin.getStringFromConfig("already-on"));
-						return true;
-						
-					}
-					
-					plugin.setStatus(true);
-					player.sendMessage(plugin.getStringFromConfig("activation"));
-					success = true;
-					
-				}else if(args[0].equals("off")) {
-					
-					if(!player.hasPermission("cc.change")) {
-						
-						player.sendMessage(plugin.getStringFromConfig("no-permission"));
-						return true;
-						
-					}
-					
-					if(!plugin.getStatus()) {
-						
-						player.sendMessage(plugin.getStringFromConfig("already-off"));
-						return true;
-						
-					}
-					
-					plugin.setStatus(false);
-					player.sendMessage(plugin.getStringFromConfig("desactivation"));
-					success = true;
-					
-				}
+				plugin.setStatus(false);
+				Bukkit.broadcastMessage(plugin.getStringFromConfig("desactivation"));
+				success = true;
+								
+			}else {
+				
+				plugin.setStatus(true);
+				Bukkit.broadcastMessage(plugin.getStringFromConfig("activation"));
+				success = true;
 				
 			}
 			

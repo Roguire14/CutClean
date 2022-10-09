@@ -22,8 +22,6 @@ public class CutClean extends JavaPlugin {
 		saveDefaultConfig();
 		
 		getCommand("cc").setExecutor(new CutCleanCommandsManager(this));
-		getCommand("activate").setExecutor(new CutCleanCommandsManager(this));
-		getCommand("desactivate").setExecutor(new CutCleanCommandsManager(this));
 		
 		getServer().getPluginManager().registerEvents(new CutCleanListeners(this), this);
 		
